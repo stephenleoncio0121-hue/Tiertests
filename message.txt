@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MCTIERS Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #222;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    /* Top navigation tabs */
+    .top-nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      position: relative;
+    }
+    .top-nav a {
+      color: #eee;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+    .top-nav a:hover {
+      background: #0ff;
+      color: #111;
+      transform: scale(1.05);
+    }
+    .top-nav a.active {
+      background: #0ff;
+      color: #111;
+      transform: scale(1.05);
+    }
+    /* Search bar top right */
+    .search-bar {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+    }
+    .search-bar input {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+    }
+    /* Info bar */
+    .info-bar {
+      text-align: right;
+      padding: 10px 20px;
+      background: #222;
+      font-size: 14px;
+    }
+    .info-bar span {
+      margin-left: 15px;
+    }
+    /* Leaderboard table without lines */
+    table {
+      width: 95%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: none; /* remove lines */
+    }
+    th {
+      background: #333;
+      font-weight: bold;
+    }
+    tr {
+      background: #1a1a1a;
+      margin-bottom: 8px;
+    }
+    tr:nth-child(even) {
+      background: #222;
+    }
+    /* Player hover effect */
+    tr:hover {
+      background: #333;
+      transform: scale(1.01);
+      transition: all 0.2s ease;
+    }
+    .player-name {
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+    .player-name:hover {
+      color: #0ff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  MCTIERS
+</header>
+
+<div class="top-nav">
+  <a href="index.html" class="active">Overall</a>
+  <a href="ltms.html">LTMs</a>
+  <a href="vanilla.html">Vanilla</a>
+  <a href="uhc.html">UHC</a>
+  <a href="pot.html">Pot</a>
+  <a href="nethop.html">NethOP</a>
+  <a href="smp.html">SMP</a>
+  <a href="sword.html">Sword</a>
+  <a href="axe.html">Axe</a>
+  <a href="mace.html">Mace</a>
+
+  <!-- Search bar top right -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search player...">
+  </div>
+</div>
+
+<div class="info-bar">
+  <span>Information</span>
+  <span>Discord</span>
+  <span>Server IP: mcpvp.club</span>
+</div>
+
+<table id="leaderboard">
+  <tr>
+    <th>Rank</th>
+    <th>Player</th>
+    <th>Title</th>
+    <th>Points</th>
+    <th>Region</th>
+    <th>Tiers</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td class="player-name">ItzRealMe</td>
+    <td>Combat Grandmaster</td>
+    <td>500</td>
+    <td>NA</td>
+    <td>HT1, HT1, HT1, HT1, HT1, HT1</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td class="player-name">coldified</td>
+    <td>Combat Master</td>
+    <td>298</td>
+    <td>NA</td>
+    <td>HT2, HT3, HT1, LT1, HT1, LT2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td class="player-name">Swight</td>
+    <td>Combat Master</td>
+    <td>280</td>
+    <td>NA</td>
+    <td>HT1, HT2, HT1, HT3, LT2, LT2</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td class="player-name">ItzClownHere</td>
+    <td>Combat Master</td>
+    <td>281</td>
+    <td>EU</td>
+    <td>HT1, LT1, HT1, HT2, LT3, LT2</td>
+  </tr>
+  <tr>
+    <td>99999999</td>
+    <td class="player-name">Marlowww</td>
+    <td>Hacker</td>
+    <td>-67</td>
+    <td>EU</td>
+    <td>HT1, HT1, HT1, HT1, HT1, HT1</td>
+  </tr>
+</table>
+
+<script>
+  // Simple search functionality
+  document.getElementById("searchInput").addEventListener("keyup", function() {
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#leaderboard tr");
+    rows.forEach((row, index) => {
+      if (index === 0) return; // skip header
+      let player = row.cells[1].textContent.toLowerCase();
+      if (player.includes(filter)) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
